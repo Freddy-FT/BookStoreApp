@@ -1,0 +1,10 @@
+.vscode/
+backend/django-project/user.txt
+backend/django-project/nginx
+
+# Python
+**/__pycache__/
+**/migrations/
+
+# node.js
+**/node_modules/

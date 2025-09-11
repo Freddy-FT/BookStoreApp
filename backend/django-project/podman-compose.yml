@@ -1,0 +1,37 @@
+networks:
+  bookstore-net:
+    external: true
+services:
+  bookstore-backend-drf:
+    build:
+      context: .
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./django:/django
+    command: >
+      sh -c "/py/bin/python manage.py db_readiness &&
+            /py/bin/python manage.py migrate &&
+            /py/bin/python manage.py runserver 0.0.0.0:8000"
+    environment:
+      - DB_HOST=db 
+      - DB_NAME=db-localdev
+      - DB_USER=localdevuser
+      - DB_PASSWORD=localdevpassword
+    depends_on:
+      - db
+    networks:
+      - bookstore-net
+  db:
+    image: postgres:17-alpine
+    volumes:
+      - db-localdev-data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=db-localdev
+      - POSTGRES_USER=localdevuser
+      - POSTGRES_PASSWORD=localdevpassword
+
+  
+volumes:
+  db-localdev-data:
+
