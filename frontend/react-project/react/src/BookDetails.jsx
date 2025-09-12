@@ -1,6 +1,6 @@
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-export default function BookDetails() {
+export function BookDetails() {
     const { id } = useParams();
     const [bookdetails,setBookdetails] = useState([]);
     const token = localStorage.getItem("accessToken");
@@ -37,6 +37,8 @@ export default function BookDetails() {
                 <h2>Description</h2>
                 <p>{bookdetails.description}</p>
             </section>
+            <Link to={`/book/${bookdetails.id}/update`}>Update</Link>
         </article>
     )
 }
+
