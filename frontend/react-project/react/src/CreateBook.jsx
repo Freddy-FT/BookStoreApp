@@ -3,11 +3,11 @@ import { useState } from 'react'
 
 export default function CreateBookForm() {
     const [title, setTitle] = useState('')
-
+    const [description, setDescription] = useState('')
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        const data = { title };
+        const data = { title, description };
         try {
             const token = localStorage.getItem("accessToken");
             const response = await fetch('http://localhost:8000/api/library_v1/book/create/', {
@@ -31,6 +31,10 @@ export default function CreateBookForm() {
                 placeholder='title'
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}/>
+                <input type="text"
+                placeholder='description'
+                value={description}
+                onChange={(e) => setDescription(e.target.value)}/>
                 <button type='submit'>Create</button>
             </form>
         </article>

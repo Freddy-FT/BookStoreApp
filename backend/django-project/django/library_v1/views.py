@@ -12,7 +12,7 @@ class BooksList(APIView):
     permission_classes = [IsAuthenticated]
     def get(self, request):
         books = Book.objects.all()
-        serializers = BookSerializer(books, many=True)
+        serializers = BookSerializer(books, many=True, context={"request": request})
         return Response(serializers.data)
     
 class BookDetails(APIView):
@@ -20,7 +20,7 @@ class BookDetails(APIView):
     permission_classes = [IsAuthenticated]
     def get(self, request, pk):
         book = get_object_or_404(Book, pk=pk)
-        serializer = BookSerializer(book)
+        serializer = BookSerializer(book, context={"request": request})
         print("nice")
         return Response(serializer.data, status=status.HTTP_200_OK)
     
@@ -38,10 +38,10 @@ class BookCreate(APIView):
 class BookUpdate(APIView):
     authentication_classes = [JWTCookieAuthentication]
     permission_classes = [IsAuthenticated]
-    def put(self, request, pk):
+    def patch(self, request, pk):
         book = get_object_or_404(Book, pk=pk)
         serializer = BookSerializer(book, data=request.data, partial=True)
-        if book.author == request.user:
+        if book.author == request.user.id:
             if serializer.is_valid():
                 serializer.save(author=self.request.user)
                 return Response(serializer.data, status=status.HTTP_200_OK)
@@ -49,7 +49,7 @@ class BookUpdate(APIView):
                 return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
         else:
             return Response(status=status.HTTP_403_FORBIDDEN)
-        
+
 class BookDelete(APIView):
     authentication_classes = [JWTCookieAuthentication]
     permission_classes = [IsAuthenticated]

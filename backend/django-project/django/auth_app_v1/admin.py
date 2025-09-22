@@ -32,7 +32,7 @@ class UserAdmin(BaseUserAdmin):
                     "password1",
                     "password2",
                     "name",
-                    "public_name"
+                    "public_name",
                     "is_active",
                     "is_staff",
                 ),

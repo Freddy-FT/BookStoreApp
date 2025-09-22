@@ -16,6 +16,7 @@ export function BookDetails() {
                 if (!response.ok){
                     throw new console.error(`HTTP error! status: ${response.status}`)
                 }
+
                 const bookdetails= await response.json();
                 setBookdetails(bookdetails);
                 console.log('Server Response: ', bookdetails);
@@ -26,6 +27,22 @@ export function BookDetails() {
         }
         fetchBookDetails();
     },[token]);
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        const token = localStorage.getItem("accessToken");
+        try {
+            const response = await fetch(`http://127.0.0.1:8000/api/library_v1/book/${id}/delete/`, {
+                method: 'DELETE',
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                }
+            });
+            const result = await response.json();
+            console.log('Server Response: ', result)
+        } catch (error) {
+            console.error('Error: ', error)
+        }
+    }
     return (
         <article>
             <header>
@@ -37,7 +54,11 @@ export function BookDetails() {
                 <h2>Description</h2>
                 <p>{bookdetails.description}</p>
             </section>
-            <Link to={`/book/${bookdetails.id}/update`}>Update</Link>
+            {bookdetails.is_author && (<>
+            <Link className='updateLink' to={`/book/${bookdetails.id}/update`}>Update</Link>
+            <form className='deleteForm' onSubmit={handleSubmit}>
+                <button type="submit">Delete</button>
+            </form></>)}
         </article>
     )
 }

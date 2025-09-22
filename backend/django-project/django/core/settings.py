@@ -197,9 +197,12 @@ CORS_ALLOW_HEADERS = [
 ]
 
 CORS_ALLOW_METHODS = [
-    "GET",
-    "POST",
-    "OPTIONS",
+    'GET',
+    'POST',
+    'PUT',
+    'PATCH',
+    'DELETE',
+    'OPTIONS',
 ]
 
 CORS_ALLOW_CREDENTIALS = False  # Du nutzt KEINE Cookies
