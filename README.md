@@ -1,3 +1,6 @@
+# !!! Important !!! ##
+## I am still working on this project and it is my hobby project so it is not finished ##
+
 **Just some BookStore build with django-restframework and react**
 ## Tech Used
 
