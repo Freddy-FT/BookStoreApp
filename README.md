@@ -24,3 +24,15 @@
 
 - **Backend** is located in the `backendfolder` where I define what backend it is.
 - **Frontend** is located in the `backendfolder` where I define what frontend it is.
+
+## Information
+
+**Features**
+
+- Login
+- Create Book
+- List all Books
+- See Details of a Book
+- Delete Book (only if you are the Author)
+- Update Book (only if you are the Author)
+- See Author Details
