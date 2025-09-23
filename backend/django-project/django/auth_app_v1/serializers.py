@@ -2,6 +2,8 @@ from django.contrib.auth import (
     get_user_model,
 )
 
+from auth_app_v1.models import User
+
 from django.db import transaction
 from django.utils.text import slugify
 from dj_rest_auth.registration.serializers import RegisterSerializer
@@ -70,4 +72,12 @@ class CustomRegisterSerializer(RegisterSerializer):
         user.save()
         return user
  
- 
+class PublicUserDetails(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ["public_name", "name", "registration_date"]
+
+class PrivateUserDetails(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ["public_name", "name", "registration_date", "email", "is_staff", "is_superuser" ]

@@ -10,6 +10,8 @@ from django.contrib.auth.models import (
     PermissionsMixin,
 )
 
+from datetime import date
+
 
 class UserManager(BaseUserManager):
     """Custom BaseUserManager for the app users."""
@@ -41,6 +43,8 @@ class User(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField(max_length=255, unique=True)
     public_name = models.CharField(max_length=150, unique=True)  # Sichtbarer Name
     name = models.SlugField(max_length=150, unique=True)         # URL-Slug
+
+    registration_date = models.DateField(default=date.today)
 
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)

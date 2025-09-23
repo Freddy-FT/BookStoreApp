@@ -8,7 +8,7 @@ class UserAdmin(BaseUserAdmin):
     ordering = ["id"]
     list_display = ["email", "name", "public_name"]
     fieldsets = (
-        ("Main Information", {"fields": ("email", "password")}),
+        ("Main Information", {"fields": ("email", "password",'id')}),
         ("Personal Information", {"fields": ("name","public_name")}),
         (
             "Permissions",
@@ -22,7 +22,7 @@ class UserAdmin(BaseUserAdmin):
         ),
         ("Additional Information", {"fields": ("last_login",)}),
     )
-    readonly_fields = ["last_login"]
+    readonly_fields = ["last_login",'id']
     add_fieldsets = (
         (
             None,
@@ -35,6 +35,7 @@ class UserAdmin(BaseUserAdmin):
                     "public_name",
                     "is_active",
                     "is_staff",
+                    'id',
                 ),
             },
         ),

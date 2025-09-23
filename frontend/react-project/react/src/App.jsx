@@ -6,6 +6,7 @@ import CreateBookForm from './CreateBook'
 import BookList from './BookList';
 import { BookSite} from './BookSite';
 import { BookUpdate } from './BookUpdate'
+import { AuthorPublicDetails } from './AuthorPublicDetails'
 //import BookDetail from './BookDetail';
 
 function Home() {
@@ -80,6 +81,8 @@ export default function App() {
         <Route path="/books/" element={<BookList />} />
         <Route path="/book/:id" element={<BookSite />} />
         <Route path="/book/:id/update" element={<BookUpdate />} />
+
+        <Route path="/author/:id/" element={<AuthorPublicDetails />} />
       </Routes>
     </BrowserRouter>
   );
