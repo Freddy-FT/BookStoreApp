@@ -27,8 +27,8 @@ I am still working on this project and it is my hobby project so it is not finis
 
 ## Project Structure
 
-- **Backend** is located in the `backendfolder` where I define what backend it is.
-- **Frontend** is located in the `backendfolder` where I define what frontend it is.
+- **Backend** is located in the `backend` folder where I define what backend it is.
+- **Frontend** is located in the `backend` folder where I define what frontend it is.
 
 ## Information
 
