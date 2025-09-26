@@ -1,12 +1,14 @@
 from rest_framework.decorators import APIView
 from rest_framework.response import Response
 from rest_framework import status
-from library_v1.serializers import BookSerializer
+from library_v1.serializers import (BookSerializer, AuthorBooksListSerializer)
 from library.models import Book
 from django.shortcuts import get_object_or_404
 from rest_framework.permissions import IsAuthenticated
 from dj_rest_auth.jwt_auth import JWTCookieAuthentication
-
+from auth_app_v1.models import User
+from django.contrib.auth import get_user_model
+User = get_user_model()
 class BooksList(APIView):
     authentication_classes = [JWTCookieAuthentication]
     permission_classes = [IsAuthenticated]
@@ -60,3 +62,14 @@ class BookDelete(APIView):
             return Response(status=status.HTTP_204_NO_CONTENT)
         else:
             return Response(status=status.HTTP_403_FORBIDDEN)
+
+class AuthorBooksList(APIView):
+    authentication_classes = [JWTCookieAuthentication]
+    permission_classes = [IsAuthenticated]
+    def get(self, request, name):
+        author = get_object_or_404(self.User, name=name)
+        books = Book.objects.filter(author=author)
+        serializer = AuthorBooksListSerializer(books, many=True, )
+        print(serializer.data)
+        return Response(serializer.data)
+        

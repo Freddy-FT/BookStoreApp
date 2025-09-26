@@ -20,8 +20,8 @@ class CustomRegisterView(RegisterView):
 class AuthorDetails(APIView):
     authentication_classes = [JWTCookieAuthentication]
     permission_classes = [IsAuthenticated]
-    def get(self, request, pk):
-        author = get_object_or_404(User, pk=pk)
+    def get(self, request, name):
+        author = get_object_or_404(User, name=name)
         if author.id == request.user.id:
             serializer = PrivateUserDetails(author)
             return Response(serializer.data, status=status.HTTP_200_OK)
@@ -30,3 +30,4 @@ class AuthorDetails(APIView):
             #serializer = PrivateUserDetails(author)
             print(serializer.data)
             return Response(serializer.data, status=status.HTTP_200_OK)
+    

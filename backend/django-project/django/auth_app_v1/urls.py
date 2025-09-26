@@ -12,5 +12,5 @@ urlpatterns = [
     path('dj-rest-auth/', include('dj_rest_auth.urls')),
     path('dj-rest-auth/registration/',include('dj_rest_auth.registration.urls'),),
     path('dj-rest-auth/registration/verify-email/', VerifyEmailView.as_view(), name='account_email_verification_sent'),
-    path('author/<int:pk>/',AuthorDetails.as_view(), name='public_author_details')
+    path('author/<slug:name>/',AuthorDetails.as_view(), name='public_author_details')
 ]    #path('registration/', CustomRegisterView.as_view(), name='custom_registration'),

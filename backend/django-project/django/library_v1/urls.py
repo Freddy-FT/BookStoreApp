@@ -1,6 +1,6 @@
 from django.urls import path, include
 from .views import (
-    BooksList, BookDetails, BookCreate, BookUpdate, BookDelete
+    BooksList, BookDetails, BookCreate, BookUpdate, BookDelete, AuthorBooksList
 )
 
 urlpatterns = [
@@ -13,4 +13,6 @@ urlpatterns = [
     path('book/<uuid:pk>/update/', BookUpdate.as_view(),),   
     
     path('book/<uuid:pk>/delete/', BookDelete.as_view(),),   
+
+    path('author/<slug:name>/books',AuthorBooksList.as_view(),),
 ]

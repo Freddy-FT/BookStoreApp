@@ -7,7 +7,8 @@ export default function BookList() {
     const token = localStorage.getItem("accessToken");
     useEffect(() => {
         async function fetchBooks() {
-            try{const response = await fetch("http://127.0.0.1:8000/api/library_v1/books/", {
+            try {
+                const response = await fetch("http://127.0.0.1:8000/api/library_v1/books/", {
                     method: 'GET',
                     headers: {
                         Authorization: `Bearer ${token}`,

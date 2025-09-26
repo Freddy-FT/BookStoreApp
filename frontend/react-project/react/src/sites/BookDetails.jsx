@@ -47,7 +47,7 @@ export function BookDetails() {
         <article>
             <header>
                 <h1>{bookdetails.title}</h1>
-                <p><strong>Author: </strong>{bookdetails.author_public_name} | <small>{bookdetails.author_name}</small></p>
+                <p><strong>Author: </strong><a href={`/author/${bookdetails.name}`}>{bookdetails.public_name}</a> | <small>{bookdetails.name}</small></p>
                 <p><strong>Released: </strong>{bookdetails.release_date}</p>
             </header>
             <section>

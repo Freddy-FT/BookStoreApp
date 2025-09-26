@@ -1,10 +1,10 @@
 import { Link, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import TrueOrFalse from "./components/checkbox"
-export function AuthorPublicDetails() {
+import TrueOrFalse from "../components/checkbox"
+export function AuthorDetails() {
     const { id } = useParams();
-    //const [authorpublicdetails, setAuthorpublicdetails] = useState(["N/A"])
-    const [authorpublicdetails, setAuthorpublicdetails] = useState({});
+    //const [authordetails, setauthordetails] = useState(["N/A"])
+    const [authordetails, setauthordetails] = useState({});
 
     const token = localStorage.getItem("accessToken");
     useEffect(() => {
@@ -21,7 +21,7 @@ export function AuthorPublicDetails() {
                 }
 
                 const authordetails = await response.json();
-                setAuthorpublicdetails(authordetails)
+                setauthordetails(authordetails)
                 }
                 catch (error) {
                     console.error('Failed to fetch', error)
@@ -31,12 +31,13 @@ export function AuthorPublicDetails() {
     }, [token]);
     return(
         <article>
-        <p>{authorpublicdetails.public_name ?? "N/A"}</p>
-        <p>{authorpublicdetails.name ?? "N/A"}</p>
-        <p>{authorpublicdetails.email ?? "N/A"}</p>
-        <p>{authorpublicdetails.registration_date ?? "N/A"}</p>
-        <TrueOrFalse label="Staff" value={authorpublicdetails.is_staff} />
-        <TrueOrFalse label="Superuser" value={authorpublicdetails.is_superuser} />
+        <p>{authordetails.public_name}</p>
+        <p>{authordetails.name}</p>
+        <p>{authordetails.email}</p>
+        <p>{authordetails.registration_date}</p>
+        <TrueOrFalse label="Staff" value={authordetails.is_staff} />
+        <TrueOrFalse label="Superuser" value={authordetails.is_superuser} />
+        <Link className='authorBooksListLink' to={`/author/${id}/books`}>Books</Link>
         </article>
 
         )
