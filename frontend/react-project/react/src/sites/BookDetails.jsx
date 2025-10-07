@@ -55,10 +55,10 @@ export function BookDetails() {
                 <p>{bookdetails.description}</p>
             </section>
             {bookdetails.is_author && (<>
-            <Link className='updateLink' to={`/book/${bookdetails.id}/update`}>Update</Link>
+            <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups"><button onClick={() => window.location.href = `/book/${bookdetails.id}/update`}className='btn btn-outline-secondary'>Update</button>
             <form className='deleteForm' onSubmit={handleSubmit}>
-                <button type="submit">Delete</button>
-            </form></>)}
+                <button type="submit" className='btn btn-danger'>Delete</button>
+            </form></div></>)}
         </article>
     )
 }

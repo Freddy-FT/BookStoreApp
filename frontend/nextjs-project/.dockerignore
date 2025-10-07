@@ -1,0 +1,4 @@
+nextjs/node_modules
+nextjs/.next
+nextjs/Dockerfile
+nextjs/docker-compose.yml

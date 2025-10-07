@@ -52,20 +52,15 @@ export function BookUpdate() {
     }
     return (
         <article>
-            <form onSubmit={handleSubmit}>
-                <input type="text"
+            <form className='form-inline justify-content-between' onSubmit={handleSubmit}>
+                <input className='form-control mr-sm-2' type="text"
                 value={title}
                 onChange={(e) => setTitle(e.target.value)} />
-                <input type='text'
+                <input className='form-control mr-sm-2' type='text'
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}/>
-                <button type="submit">Update</button>
+                <button className='btn btn-primary' type="submit">Update</button>
             </form>
         </article>
-    )}
-
-
-
-
-    //"description",
-    //"",
+    )
+}

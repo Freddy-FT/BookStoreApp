@@ -1,6 +1,6 @@
 import { Link, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import TrueOrFalse from "../components/checkbox"
+import TrueOrFalse from "../components/components"
 export function AuthorDetails() {
     const { id } = useParams();
     //const [authordetails, setauthordetails] = useState(["N/A"])

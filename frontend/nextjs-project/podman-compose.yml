@@ -1,0 +1,21 @@
+version: '3.8'
+networks:
+  bookstore-net:
+    external: true
+services:
+  bookstore-frontend-nextjs:
+    build:
+      context: .
+    ports:      
+      - "3000:3000"
+    working_dir: /nextjs
+
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+      - NODE_ENV=development
+    volumes:
+      - ./nextjs:/nextjs
+    command: >
+      sh -c "npm install && npx next dev --turbo"
+    networks:
+      - bookstore-net
