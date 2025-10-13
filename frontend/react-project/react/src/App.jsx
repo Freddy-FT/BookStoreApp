@@ -34,20 +34,23 @@ function CreateBook() {
     )
 }
 
+
 function NavItem({ to, children }) {
   return (
+    <li>
       <NavLink
         to={to}
         className={({ isActive }) =>
-          `
-          ${isActive ? "" : ""}`
+          `flex items-center p-2 text-sm gap-x-2 transition-colors duration-200 ${
+            isActive ? "text-black font-semibold dark:text-white" : "text-slate-600 hover:text-black dark:text-slate-400 dark:hover:text-slate-600"
+          }`
         }
       >
         {children}
       </NavLink>
+    </li>
   );
 }
-
 
 export default function App() {
     useEffect(() => {
@@ -67,22 +70,38 @@ export default function App() {
     },[]);
     const [menuOpen, setMenuOpen] = useState(false);
     return (
+        <div className='bg-gray-200 dark:bg-gray-800'>
         <BrowserRouter>
-            <header className='header-main'>
-                
-                  {/* Logo */}
-                  <a href="/" className="header-main-logo">
-                      <img src="" className="h-8" alt="BookStore Logo" />
-                      <span className="">BookStore</span>
-                  </a>
 
-                  {/* Navigation Links */}
-                    <NavItem to="/">Home</NavItem>
-                    <NavItem to="/about">About</NavItem>
-                    <NavItem to="/login">Login</NavItem>
-                    <NavItem to="/books">Explore Books</NavItem>
-                    <NavItem to="/book/create">Create Book</NavItem>
-            </header>
+            <nav className='block w-full  px-4 py-2 mx-auto bg-white shadow-md rounded-t-lg lg:px-8 lg:py-3 dark:bg-black'>
+                <div class="container flex flex-wrap items-center justify-between mx-auto text-slate-800 dark:text-slate-200">                
+                        {/* Logo */}
+                        
+                            <a href="/" className="mr-4 block cursor-pointer py-1.5 text-base text-slate-800 font-semibold dark:text-slate-200">
+                                <img src="" className="h-8" alt="BookStore Logo" />
+                                <span className="">BookStore</span>
+                            </a>
+                    <div class="hidden lg:block">
+                        <ul class="flex flex-col gap-2 mt-2 mb-4 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6 hover:test-">
+                            {/* Navigation Links */}
+                            
+                                <NavItem to="/">Home</NavItem>
+
+                            
+                                <NavItem to="/about">About</NavItem>
+
+                            
+                                <NavItem to="/login">Login</NavItem>
+
+                            
+                                <NavItem to="/books">Explore Books</NavItem>
+
+                            
+                                <NavItem to="/book/create">Create Book</NavItem>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
 
             <Routes>
                 <Route path="/" element={<Home />} />
@@ -99,6 +118,7 @@ export default function App() {
                 <Route path="/author/:id/books/" element={<AuthorBooksList />} />
             </Routes>
         </BrowserRouter>
+        </div>
     );
 }                       
 
@@ -117,19 +137,19 @@ export default function App() {
     </button>
     <div class="hidden w-full md:block md:w-auto" id="navbar-default">
       <ul class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
-        <li>
+        
           <a href="#" class="block py-2 px-3 text-white bg-blue-700 rounded-sm md:bg-transparent md:text-blue-700 md:p-0 dark:text-white md:dark:text-blue-500" aria-current="page">Home</a>
         </li>
-        <li>
+        
           <a href="#" class="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">About</a>
         </li>
-        <li>
+        
           <a href="#" class="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Services</a>
         </li>
-        <li>
+        
           <a href="#" class="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Pricing</a>
         </li>
-        <li>
+        
           <a href="#" class="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Contact</a>
         </li>
       </ul>
