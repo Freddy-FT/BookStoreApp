@@ -1,7 +1,8 @@
 // App.jsx
 import { BrowserRouter, Routes, Route, Link, NavLink } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import LoginForm from './sites/Login';
+import LoginForm from './sites/auth/Login';
+import SignupForm from './sites/auth/Signup';
 import CreateBookForm from './sites/CreateBook';
 import BookList from './sites/BookList';
 import Home from './sites/Home';
@@ -22,6 +23,14 @@ function Login() {
     return (
         <div>
             <LoginForm />
+        </div>
+    )
+}
+
+function Signup() {
+    return (
+        <div>
+            <SignupForm />
         </div>
     )
 }
@@ -70,19 +79,19 @@ export default function App() {
     },[]);
     const [menuOpen, setMenuOpen] = useState(false);
     return (
-        <div className='bg-gray-200 dark:bg-gray-800'>
+        <div className='bg-gray-200 dark:bg-black min-h-screen'>
         <BrowserRouter>
 
             <nav className='block w-full  px-4 py-2 mx-auto bg-white shadow-md rounded-t-lg lg:px-8 lg:py-3 dark:bg-black'>
-                <div class="container flex flex-wrap items-center justify-between mx-auto text-slate-800 dark:text-slate-200">                
+                <div className="container flex flex-wrap items-center justify-between mx-auto text-slate-800 dark:text-slate-200">                
                         {/* Logo */}
                         
                             <a href="/" className="mr-4 block cursor-pointer py-1.5 text-base text-slate-800 font-semibold dark:text-slate-200">
-                                <img src="" className="h-8" alt="BookStore Logo" />
+                                {/*<img src="" className="h-8" alt="BookStore Logo" />*/}
                                 <span className="">BookStore</span>
                             </a>
-                    <div class="hidden lg:block">
-                        <ul class="flex flex-col gap-2 mt-2 mb-4 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6 hover:test-">
+                    <div className="hidden lg:block">
+                        <ul className="flex flex-col gap-2 mt-2 mb-4 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6 hover:test-">
                             {/* Navigation Links */}
                             
                                 <NavItem to="/">Home</NavItem>
@@ -107,6 +116,7 @@ export default function App() {
                 <Route path="/" element={<Home />} />
                 <Route path="/about" element={<About />} />
                 <Route path="/login" element={<Login />} />
+                <Route path="/signup" element={<Signup />} />
                 <Route path="/book/create" element={<CreateBook />} />
                 <Route path="/testcomponents" element={<TestComponents />} />
 

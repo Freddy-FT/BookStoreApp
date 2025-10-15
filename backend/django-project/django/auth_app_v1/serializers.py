@@ -55,7 +55,7 @@ class CustomRegisterSerializer(RegisterSerializer):
     def validate_public_name(self, value):
         if get_user_model().objects.filter(public_name=value).exists():
             raise serializers.ValidationError("A user with this Username already exists.")
-
+        return value
     def get_cleaned_data(self):
         return {
             'email': self.validated_data.get('email', ''),

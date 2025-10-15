@@ -1,7 +1,4 @@
 version: '3.8'
-networks:
-  bookstore-net:
-    external: true
 services:
   bookstore-frontend-react:
     build:
@@ -17,5 +14,3 @@ services:
       - ./react:/react
     command: >
       sh -c "npm install && npm run dev -- --host"    
-    networks:
-      - bookstore-net

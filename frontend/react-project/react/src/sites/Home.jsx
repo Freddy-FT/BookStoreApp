@@ -1,10 +1,10 @@
 export default function Home() {
   return (
+  <article>
     <section    >
         <div className="relative min-h-screen flex items-center justify-center
        bg-[url('https://images.unsplash.com/photo-1521587760476-6c12a4b040da?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')]
        bg-gray-800 bg-no-repeat bg-cover bg-center bg-fixed text-white grayscale-25">
-      
 
 
 
@@ -49,5 +49,6 @@ export default function Home() {
         <div className="relative z-20 bg-black/40 backdrop-blur-sm p-6 rounded-lg mx-auto max-w-screen-xl text-center" >this is also a test</div>
       </div>
     </section>
+    </article>
   );
 }

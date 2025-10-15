@@ -52,15 +52,18 @@ export function BookUpdate() {
     }
     return (
         <article>
-            <form className='form-inline justify-content-between' onSubmit={handleSubmit}>
-                <input className='form-control mr-sm-2' type="text"
+            <div className='mt-10 text-black dark:text-white space-y-2'>
+            <form className='ml-3 w-full max-w-sm border border-gray-800 rounded-lg shadow-xl sm:p-6 md:p-8 bg-gray-200 dark:bg-gray-800 dark:border-gray-700' onSubmit={handleSubmit}>
+                <input className='text-black dark:text-black bg-gray-50 border border-gray-300  text-sm rounded-lg hover:bg-gray-200 focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:border-gray-500 dark:placeholder-black ' type="text"
                 value={title}
                 onChange={(e) => setTitle(e.target.value)} />
-                <input className='form-control mr-sm-2' type='text'
+                <input className='text-black dark:text-black bg-gray-50 border border-gray-300  text-sm rounded-lg hover:bg-gray-200 focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:border-gray-500 dark:placeholder-black ' type='text'
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}/>
-                <button className='btn btn-primary' type="submit">Update</button>
-            </form>
+                <div className="space-y-2 mt-2" role="toolbar">
+                <button className='cursor-pointer w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800' type="submit">Update</button>
+            </div></form>
+            </div>
         </article>
     )
 }

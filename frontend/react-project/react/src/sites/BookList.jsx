@@ -31,12 +31,12 @@ export default function BookList() {
     },[token]);
     return (
         <article>
-            <div>
-                <h1>Books</h1>
+            <div className='text-black dark:text-white space-y-2'>
+                <h1 className='text-xl font-medium text-gray-900 dark:text-white ml-3'>Books</h1>
                 {books.map((book) => 
-                    <div key={book.id}>
-                        <h3>{book.title}</h3>
-                        <Link to={`/book/${book.id}`}>Details</Link>
+                    <div className='ml-3 w-full max-w-sm border border-gray-800 rounded-lg shadow-xl sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700' key={book.id}>
+                        <h2 className='text-m font-medium text-gray-900 dark:text-white mb-3'>{book.title}</h2>
+                        <Link to={`/book/${book.id}`} className='w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 '>Details</Link>
                     </div>
                 )}
             </div>

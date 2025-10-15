@@ -1,6 +1,3 @@
-networks:
-  bookstore-net:
-    external: true
 services:
   bookstore-backend-drf:
     build:
@@ -20,8 +17,6 @@ services:
       - DB_PASSWORD=localdevpassword
     depends_on:
       - db
-    networks:
-      - bookstore-net
   db:
     image: postgres:17-alpine
     volumes:

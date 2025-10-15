@@ -43,7 +43,7 @@ class BookUpdate(APIView):
     def patch(self, request, pk):
         book = get_object_or_404(Book, pk=pk)
         serializer = BookSerializer(book, data=request.data, partial=True)
-        if book.author == request.user.id:
+        if book.author == request.user:
             if serializer.is_valid():
                 serializer.save(author=self.request.user)
                 return Response(serializer.data, status=status.HTTP_200_OK)
