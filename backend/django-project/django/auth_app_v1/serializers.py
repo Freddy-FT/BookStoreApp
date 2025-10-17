@@ -35,7 +35,7 @@ class CustomRegisterSerializer(RegisterSerializer):
     name = serializers.CharField(max_length=150)
 
     def __init__(self, *args, **kwargs):
-        print("✅ CustomRegisterSerializer loaded")
+        print("CustomRegisterSerializer loaded")
         super().__init__(*args, **kwargs)
         self.fields.pop('username', None) 
 
