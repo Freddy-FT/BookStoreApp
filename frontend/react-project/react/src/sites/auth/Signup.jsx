@@ -69,7 +69,7 @@ export default function SignupForm() {
                         value={password1}
                         onChange={(e) => setPassword1(e.target.value)} />
                     </div>
-                                        <div>
+                    <div>
                         <label htmlFor="password" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Repeat your password</label>
                         <input type="password"
                         className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg hover:bg-gray-200 focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:border-gray-500 dark:placeholder-black dark:text-white'
