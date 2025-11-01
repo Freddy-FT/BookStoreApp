@@ -14,7 +14,7 @@ class CustomRegisterView(RegisterView):
     serializer_class = CustomRegisterSerializer
 
     def get_serializer_class(self):
-        print("✅ Using CustomRegisterSerializer")
+        print("Using CustomRegisterSerializer")
         return self.serializer_class
     
 class AuthorDetails(APIView):
